@@ -28,7 +28,11 @@ docker compose up -d --build
 # Quota per project
 
 Projects: 15
+
 Quota per month: 300k
+
 Quota per day: 10k
+
 Quota project per day: 665 😢
+
 Quota project per hour: 27 😢
