@@ -1,0 +1,29 @@
+
+_format_version: "3.0"
+
+plugins:
+- name: prometheus
+  config:
+    status_code_metrics: true
+    latency_metrics: true
+    bandwidth_metrics: true
+    upstream_health_metrics: true
+
+services:
+- name: sentry-ingest
+  url: https://o4506785657782272.ingest.sentry.io
+  routes:
+  - name: sentry-ingest
+    paths:
+    - /sentry
+
+  plugins:
+  - name: rate-limiting
+    config:
+      policy: redis
+      limit_by: path
+      path: /
+      minute: 1
+      redis_host: redis
+      redis_port: 6379
+      redis_database: 0
